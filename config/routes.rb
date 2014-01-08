@@ -1,4 +1,11 @@
 FaceSorcery::Application.routes.draw do
+  get "home/index"
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback" # for use with Github
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+
+  root 'home#index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
